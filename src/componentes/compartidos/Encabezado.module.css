@@ -1,0 +1,15 @@
+.ecabezado {
+    @apply h-xl flex justify-between shadow bg-white text-gray-700 relative;
+}
+
+ .contenedor {
+   @apply flex items-center pl-4;
+ }
+.logo {
+    @apply mr-2 h-10 w-10;
+}
+.titulo {
+    @apply text-lg font-semibold text-gray-900 uppercase;
+}
+ 
+ 

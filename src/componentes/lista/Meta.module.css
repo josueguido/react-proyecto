@@ -1,0 +1,15 @@
+.meta {
+    @apply flex p-2 justify-between;
+}
+
+.icono {
+    @apply h-10 w-10 nm-inset-gray-100 rounded-full flex items-center justify-center text-xl;
+}
+
+.barra1 {
+    @apply nm-convex-gray-100 h-1 w-28 rounded bg-blue-200;
+}
+
+.barra2 {
+    @apply h-1 rounded bg-gradient-to-l from-green-200 to-blue-500;        
+}
