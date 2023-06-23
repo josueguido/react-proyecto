@@ -1,38 +1,27 @@
-.App {
-  text-align: center;
+.tarjeta {
+  @apply rounded-xl m-4  text-gray-700 text-xs mx-4 nm-flat-white overflow-hidden;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.boton {
+  @apply text-sm font-bold py-1 px-4 rounded-full;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.boton--negro {
+  @apply text-white nm-flat-gray-700 hover:bg-gray-800;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.boton--rojo {
+  @apply text-red-500 nm-flat-gray-100 border border-red-500 hover:bg-red-500 hover:text-white;
 }
 
-.App-link {
-  color: #61dafb;
+.boton--gris {
+  @apply nm-flat-gray-100 hover:bg-gray-200;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.label {
+  @apply block uppercase text-xs font-bold mb-6;
+}
+
+.input {
+  @apply nm-inset-gray-100 w-full border rounded-xl;
 }
