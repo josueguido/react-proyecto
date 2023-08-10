@@ -1,8 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
-import estilos from "./Detalles.module.css";
-import { Contexto } from "../servicios/Memoria";
+import { ContextoMetas } from "../../../memoria/Metas";
 import { useNavigate, useParams } from "react-router";
-import { actualizarMeta, borrarMeta, crearMeta } from "../servicios/Pedidos";
+import {
+    actualizarMeta,
+    borrarMeta,
+    crearMeta,
+} from "../../../servicios/Pedidos";
+import estilos from "./Detalles.module.css";
 
 function Detalles() {
     const { id } = useParams();
@@ -17,7 +21,7 @@ function Detalles() {
         completado: 0,
     });
 
-    const [enviar] = useContext(Contexto);
+    const [estado, enviar] = useContext(ContextoMetas);
 
     const { detalles, eventos, periodo, icono, meta, plazos, completado } =
         form;
@@ -32,119 +36,130 @@ function Detalles() {
         console.log(form);
     }, [form]);
 
-    const crear = async () => {
-        const nuevaMeta = await crearMeta(form);
-        enviar({ tipo: "crear", meta: nuevaMeta });
-        navegar("/Lista");
+    const enCrear = async (evento) => {
+        evento.preventDefault();
+        const meta = await crearMeta(form);
+        enviar({ tipo: "crear", meta });
+        regresar();
     };
 
-    const actualizar = async () => {
-        const metaActualizada = await actualizarMeta();
-        enviar({ tipo: "actualizar", meta: metaActualizada });
-        navegar("/lista");
-    };
-    const borrar = async () => {
-        await borrarMeta(form.id);
-        enviar({ tipo: "borrar", id: form.id });
-        navegar("/lista");
+    const enActualizar = async (evento) => {
+        evento.preventDefault();
+        const meta = await actualizarMeta(form);
+        enviar({ tipo: "actualizar", meta });
+        regresar();
     };
 
-    const cancelar = () => {
+    const enBorrar = async () => {
+        const id = form.id;
+        await borrarMeta(id);
+        enviar({ tipo: "borrar", id });
+        regresar();
+    };
+
+    const regresar = () => {
         navegar("/lista");
     };
 
     const frecuencias = ["dia", "semana", "mes", "año"];
     const iconos = ["💻", "📚", "🏃", "✈️", "💵"];
     return (
-        <div className="rounded-xl m-4  text-gray-700 text-xs mx-4 nm-flat-white overflow-hidden">
-            <form className="padding: 1rem">
-                <label className=" block uppercase text-xs font-bold mb-6">
+        <div className={estilos.tarjeta}>
+            <form className={estilos.p - 4}>
+                <label className={estilos.label}>
                     Describe tu meta
                     <input
-                        className="nm-inset-gray-100 w-full border rounded-xl"
+                        className={estilos.input}
                         placeholder="ej. 52 caminatas"
                         value={detalles}
                         onChange={(e) => onChange(e, "detalles")}
                     />
                 </label>
-                <label className=" block uppercase text-xs font-bold mb-6">
+                <label className={estilos.label}>
                     ¿Con que frecuencia deseas cumplir tu meta?{" "}
                     <span>(ej. 1 vez a la semana)</span>
-                    <div className="flex  margin-bottom: 1.5rem">
+                    <div className="flex mb-6">
                         <input
                             type="number"
-                            className="nm-inset-gray-100 w-full border rounded-xl"
+                            className="input mr-6"
                             value={eventos}
                             onChange={(e) => onChange(e, "eventos")}
                         />
                         <select
-                            className="nm-inset-gray-100 w-full border rounded-xl"
+                            className={estilos.input}
                             value={periodo}
                             onChange={(e) => onChange(e, "periodo")}
                         >
-                            {frecuencias.map((option) => (
-                                <option key={option}>{option}</option>
+                            {frecuencias.map((opcion) => (
+                                <option key={opcion} value={opcion}>
+                                    {opcion}
+                                </option>
                             ))}
                         </select>
                     </div>
                 </label>
-                <label className=" block uppercase text-xs font-bold mb-6">
+                <label className={estilos.input}>
                     ¿Cuantas veces deseas completar esta meta?
                     <input
                         type="number"
-                        className="nm-inset-gray-100 w-full border rounded-xl"
+                        className={estilos.input}
                         value={meta}
                         onChange={(e) => onChange(e, "meta")}
                     />
                 </label>
-                <label className=" block uppercase text-xs font-bold mb-6">
-                    ¿Tienes una fecha limite?
+                <label className="label">
+                    ¿Tienes una fecha límite?
                     <input
-                        type="number"
-                        className="nm-inset-gray-100 w-full border rounded-xl"
+                        type="date"
+                        className={estilos.input}
                         value={plazos}
-                        onChange={(e) => onChange(e, "plazos")}
+                        onChange={(e) => onChange(e, "plazo")}
                     />
                 </label>
-                <label className=" block uppercase text-xs font-bold mb-6">
+                <label className="label">
                     ¿Cuantas veces haz completado ya esta meta?
                     <input
                         type="number"
-                        className="nm-inset-gray-100 w-full border rounded-xl"
+                        className={estilos.input}
                         value={completado}
                         onChange={(e) => onChange(e, "completado")}
                     />
                 </label>
-                <label className=" block uppercase text-xs font-bold mb-6">
+                <label className="label">
                     Escoge el icono para la meta
                     <select
-                        className="nm-inset-gray-100 w-full border rounded-xl"
+                        className={estilos.input}
                         value={icono}
                         onChange={(e) => onChange(e, "icono")}
                     >
-                        {iconos.map((option) => (
-                            <option key={option}>{option}</option>
+                        {iconos.map((opcion) => (
+                            <option key={opcion} value={opcion}>
+                                {opcion}
+                            </option>
                         ))}
                     </select>
                 </label>
             </form>
             <div className={estilos.botones}>
                 {!id && (
-                    <button className="boton boton--negro" onClick={crear}>
+                    <button className="boton boton--negro" onClick={enCrear}>
                         Crear
                     </button>
                 )}
                 {id && (
-                    <button className="boton boton--negro" onClick={actualizar}>
+                    <button
+                        className="boton boton--negro"
+                        onClick={enActualizar}
+                    >
                         Actualizar
                     </button>
                 )}
                 {id && (
-                    <button className="boton boton--rojo" onClick={borrar}>
+                    <button className="boton boton--rojo" onClick={enBorrar}>
                         Borrar
                     </button>
                 )}
-                <button className="boton boton--gris" onClick={cancelar}>
+                <button className="boton boton--gris" onClick={regresar}>
                     Cancelar
                 </button>
             </div>

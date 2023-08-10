@@ -11,5 +11,5 @@
 }
 
 .barra2 {
-    @apply h-1 rounded bg-gradient-to-l from-green-200 to-blue-500;        
+    @apply h-1 rounded bg-gradient-to-l from-green-200 to-blue-500;
 }

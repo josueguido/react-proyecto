@@ -1,3 +1,4 @@
+import React from "react";
 import estilos from "./Encabezado.module.css";
 import { ReactComponent as LogoSVG } from "../../img/logo.svg";
 import { ReactComponent as PerfilSVG } from "../../img/perfil.svg";

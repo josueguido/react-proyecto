@@ -1,17 +1,19 @@
+import React from "react";
 import Encabezado from "./Encabezado";
 import Pie from "./Pie";
-import Principal from "./Principal";
-import Detalles from "../nueva/Detalles";
-import Lista from "../lista/Lista";
-
-function Layout() {
+import { Outlet } from "react-router";
+import estilos from "./Layout.module.css";
+import Aside from "./Aside";
+function Layout({ privado }) {
     return (
         <>
             <Encabezado></Encabezado>
-            <Principal>
-                <Lista></Lista>
-                <Detalles></Detalles>
-            </Principal>
+            <main className={estilos.main}>
+                {privado && <Aside />}
+                <section className={estilos.section}>
+                    <Outlet></Outlet>
+                </section>
+            </main>
             <Pie></Pie>
         </>
     );

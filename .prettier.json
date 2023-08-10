@@ -3,10 +3,10 @@
     "bracketSameLine": false,
     "bracketSpacing": true,
     "semi": true,
-    "singleQuote": false,
+    "singleQuote": true,
     "jsxSingleQuote": false,
     "quoteProps": "as-needed",
-    "trailingComma": "all",
+    "trailingComma": "es5",
     "singleAttributePerLine": false,
     "htmlWhitespaceSensitivity": "css",
     "vueIndentScriptAndStyle": false,
@@ -15,4 +15,4 @@
     "printWidth": 80,
     "requirePragma": false,
     "embeddedLanguageFormatting": "auto"
-  }
+}

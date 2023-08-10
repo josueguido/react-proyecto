@@ -1,27 +1,27 @@
 .tarjeta {
-  @apply rounded-xl m-4  text-gray-700 text-xs mx-4 nm-flat-white overflow-hidden;
+    @apply rounded-xl m-4  text-gray-700 text-xs mx-4 nm-flat-white overflow-hidden;
 }
 
 .boton {
-  @apply text-sm font-bold py-1 px-4 rounded-full;
+    @apply text-sm font-bold py-1 px-4 rounded-full;
 }
 
 .boton--negro {
-  @apply text-white nm-flat-gray-700 hover:bg-gray-800;
+    @apply text-white nm-flat-gray-700 hover:bg-gray-800;
 }
 
 .boton--rojo {
-  @apply text-red-500 nm-flat-gray-100 border border-red-500 hover:bg-red-500 hover:text-white;
+    @apply text-red-500 nm-flat-gray-100 border border-red-500 hover:bg-red-500 hover:text-white;
 }
 
 .boton--gris {
-  @apply nm-flat-gray-100 hover:bg-gray-200;
+    @apply nm-flat-gray-100 hover:bg-gray-200;
 }
 
 .label {
-  @apply block uppercase text-xs font-bold mb-6;
+    @apply block uppercase text-xs font-bold mb-6;
 }
 
 .input {
-  @apply nm-inset-gray-100 w-full border rounded-xl;
+    @apply nm-inset-gray-100 w-full border rounded-xl;
 }

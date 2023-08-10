@@ -1,10 +1,10 @@
 {
-    "id":2,
-    "detalles":"Backend",
-    "periodo":"año",
-    "eventos":6,
-    "icono":"📚",
-    "meta":12,
-    "plazo":"2030/1/01",
-    "completado":0
+    "id": 2,
+    "detalles": "Backend",
+    "periodo": "año",
+    "eventos": 6,
+    "icono": "📚",
+    "meta": 12,
+    "plazo": "2030/1/01",
+    "completado": 0
 }

@@ -1,3 +1,4 @@
+import React from "react";
 import { createContext, useReducer } from "react";
 
 const listaMock = [
@@ -85,18 +86,16 @@ function reductor(estado, accion) {
     }
 }
 
-const metas = reductor(estadoInicial, { tipo: "colocar", metas: listaMock });
 
-export const Contexto = createContext(null);
 
-function Memoria({ children }) {
-    const [estado, enviar] = useReducer(reductor, metas);
+export const ContextoMetas = createContext(null);
 
+function MetasMemoria({ children }) {
+    const value = useReducer(reductor, estadoInicial);
     return (
-        <Contexto.Provider value={[estado, enviar]}>
-            {children}
-        </Contexto.Provider>
+      <ContextoMetas.Provider value={value}>{children}</ContextoMetas.Provider>
     );
-}
+  }
+  
 
-export default Memoria;
+export default MetasMemoria;

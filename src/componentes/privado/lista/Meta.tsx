@@ -1,17 +1,30 @@
+import React from "react";
+import { MetaTipo } from "../../../tipos/MetaTipo";
 import estilos from "./Meta.module.css";
+import { Link } from "react-router-dom";
 
-function Meta({ icono, eventos, periodo, detalles, meta, completado }) {
+interface MetaProps extends MetaTipo {}
+
+function Meta({
+    id,
+    icono,
+    eventos,
+    periodo,
+    detalles,
+    meta,
+    completado,
+}: MetaProps) {
     return (
-        <div className={`${estilos.meta} tarjeta`}>
+        <Link to={`/lista/${id}`} className={estilos.meta + " tarjeta"}>
             <div className="flex items-center">
                 <div className={estilos.icono}>{icono}</div>
-                <div>
-                    <p className="text-xl ml-5 mr-10">
-                        {eventos}
-                        <sub className="text-gray-500">/ {periodo}</sub>
-                    </p>
-                    <p>{detalles}</p>
-                </div>
+                <p className="text-xl ml-5 mr-10">
+                    {eventos}
+                    <sub className="text-xs text-gray-500 ml-1">
+                        / {periodo}
+                    </sub>
+                </p>
+                <p>{detalles}</p>
             </div>
             <div className="flex">
                 <div className="relative m-2 mx-5">
@@ -29,15 +42,9 @@ function Meta({ icono, eventos, periodo, detalles, meta, completado }) {
                         ></div>
                     </div>
                 </div>
-                <div>
-                    <div></div>
-                </div>
-            </div>
-            <div className={estilos.botones}>
                 <button className="boton boton--gris">Completado</button>
             </div>
-        </div>
+        </Link>
     );
 }
-
 export default Meta;

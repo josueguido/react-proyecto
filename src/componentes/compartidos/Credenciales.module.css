@@ -1,0 +1,11 @@
+.auth {
+    width: 600px;
+    margin: 0 auto;
+    position: relative;
+    top: 50%;
+    transform: translateY();
+}
+
+.head {
+    @apply text-lg m-3 uppercase;
+}

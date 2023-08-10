@@ -1,0 +1,8 @@
+.main {
+    height: calc(100vh - theme("height.principal"));
+    @apply flex;
+}
+
+.section {
+    @apply w-full h-full overflow-y-auto;
+}
