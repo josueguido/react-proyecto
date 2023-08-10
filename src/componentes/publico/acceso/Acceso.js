@@ -2,13 +2,15 @@ import React, { useContext } from "react";
 import Credenciales from "../../compartidos/Credenciales";
 import { ContextoAuth } from "../../../memoria/Auth";
 import { useNavigate } from "react-router";
+import { acceder } from "../../../servicios/Auth";
 function Acceso() {
 
     const navegar = useNavigate();
 
     const [auth, enviarAuth] = useContext(ContextoAuth);
     const enviar = async (form) => {
-        enviarAuth({ tipo: 'colocar', token: 'token' });
+        const token = await acceder(form);
+        enviarAuth({ tipo: 'colocar', token: token });
         navegar('/lista');
     };
 
