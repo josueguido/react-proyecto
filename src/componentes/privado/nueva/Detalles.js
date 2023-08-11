@@ -5,7 +5,7 @@ import {
     actualizarMeta,
     borrarMeta,
     crearMeta,
-} from "../../../servicios/Pedidos";
+} from "../../../servicios/Metas";
 import estilos from "./Detalles.module.css";
 
 function Detalles() {
@@ -32,9 +32,15 @@ function Detalles() {
 
     const navegar = useNavigate();
 
+    const metaMemoria = estado.objetos[id];
+
     useEffect(() => {
-        console.log(form);
-    }, [form]);
+        if (!id) return;
+        if (!metaMemoria) {
+          return navegar("/404");
+        }
+        setForm(metaMemoria);
+      }, [id, metaMemoria, navegar]);
 
     const enCrear = async (evento) => {
         evento.preventDefault();

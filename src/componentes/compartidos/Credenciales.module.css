@@ -3,7 +3,7 @@
     margin: 0 auto;
     position: relative;
     top: 50%;
-    transform: translateY();
+    transform: translateY(-50%);
 }
 
 .head {

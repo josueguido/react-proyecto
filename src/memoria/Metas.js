@@ -83,6 +83,7 @@ function reductor(estado, accion) {
             return nuevoEstado;
         }
         default:
+            throw new Error();
     }
 }
 

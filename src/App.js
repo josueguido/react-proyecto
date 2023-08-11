@@ -11,7 +11,7 @@ import Registro from "./componentes/publico/registro/Registro";
 import Acceso from "./componentes/publico/acceso/Acceso";
 import { Autenticar } from "./componentes/compartidos/Autenticar";
 import { ContextoMetas } from "./memoria/Metas";
-import { pedirMetas } from "./servicios/Pedidos";
+import { pedirMetas } from "./servicios/Metas";
 function App() {
     const  [, enviar] = useContext(ContextoMetas);
 
